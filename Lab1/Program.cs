@@ -69,7 +69,6 @@ namespace Lab1
             Stopwatch stopwatch = new Stopwatch();
 
             stopwatch.Start();
-            // do the work
 
             foreach (var kvp in keyValuePairs)
             {
@@ -84,21 +83,42 @@ namespace Lab1
 
         }
 
-
-        //TODO
         public static double QueryKeyValueMap<TKey, TValue>(
                 IKeyValueMap<TKey, TValue> keyValueMap,
                 List<KeyValuePair<TKey, TValue>> keyValuePairs)
         {
-            return 0.0;
+            Stopwatch stopwatch = new Stopwatch();
+
+            stopwatch.Start();
+            foreach (var kvp in keyValuePairs)
+            {
+                var value = keyValueMap.Get(kvp.Key);
+            }
+
+            stopwatch.Stop();
+
+            Console.WriteLine(stopwatch.Elapsed.TotalSeconds);
+            return stopwatch.Elapsed.TotalSeconds;
+
         }
 
-        //TODO
         public static double RemoveKeyValueMap<TKey, TValue>(
                 IKeyValueMap<TKey, TValue> keyValueMap,
                 List<KeyValuePair<TKey, TValue>> keyValuePairs)
         {
-            return 0.0;
+            Stopwatch stopwatch = new Stopwatch();
+
+            stopwatch.Start();
+            foreach (var kvp in keyValuePairs)
+            {
+                var remove = keyValueMap.Remove(kvp.Key);
+            }
+
+            stopwatch.Stop();
+
+            Console.WriteLine(stopwatch.Elapsed.TotalSeconds);
+            return stopwatch.Elapsed.TotalSeconds;
+
         }
     }
 }
