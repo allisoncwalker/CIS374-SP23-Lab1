@@ -10,7 +10,7 @@ namespace Lab1
         static void Main(string[] args)
         {
             int MAX = 100000;
-            int ITERATIONS = 51;
+            int ITERATIONS = 11;
 
             double totalOrderedCreate = 0;
             double totalUnorderedCreate = 0;
