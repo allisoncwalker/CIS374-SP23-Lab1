@@ -38,5 +38,9 @@ namespace Lab1
 
 
         }
+        public void Clear()
+        {
+            AVLTreeMap.Clear();
+        }
     }
 }

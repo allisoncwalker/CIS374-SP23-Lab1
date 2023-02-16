@@ -33,6 +33,11 @@ namespace Lab1
             else {
                 return false;
             }
+
+        }
+        public void Clear()
+        {
+            binarySearchTreeMap.Clear();
         }
     }
 }

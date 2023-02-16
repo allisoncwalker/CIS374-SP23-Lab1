@@ -35,6 +35,10 @@ namespace Lab1
                 return false;
             }
         }
+        public void Clear()
+        {
+            RedBlackTreeMap.Clear();
+        }
     }
 }
 
