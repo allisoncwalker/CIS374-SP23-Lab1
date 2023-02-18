@@ -9,20 +9,20 @@ namespace Lab1
     {
         static void Main(string[] args)
         {
-            int MAX = 100000;
+            int MAX = 1_000_000;
             int ITERATIONS = 11;
 
-            double totalOrderedCreate = 0;
-            double totalUnorderedCreate = 0;
+            //double totalOrderedCreate = 0;
+            //double totalUnorderedCreate = 0;
 
             double totalOrderedGet = 0;
-            double totalUnorderedGet = 0;
+            //double totalUnorderedGet = 0;
 
-            double totalOrderedRemove = 0;
-            double totalUnorderedRemove = 0;
+            //double totalOrderedRemove = 0;
+            //double totalUnorderedRemove = 0;
 
-            double totalHeightOrdered = 0;
-            double totalHeightUnordered = 0;
+            //double totalHeightOrdered = 0;
+            //double totalHeightUnordered = 0;
 
             IKeyValueMap<int, int> keyValueMap = null;
 
@@ -31,7 +31,7 @@ namespace Lab1
             var avlKeyValueMap = new AVLTreeKeyValueMap<int, int>();
             var redblackKeyValueMap = new RedBlackTreeKeyValueMap<int, int>();
 
-            keyValueMap = bstKeyValueMap;
+            keyValueMap = avlKeyValueMap;
 
             for (int c = 0; c < ITERATIONS; c++)
             {
@@ -44,37 +44,45 @@ namespace Lab1
 
                 keyValueMap.Clear();
                 // Ordered
-                totalOrderedCreate += CreateKeyValueMap<int, int>(keyValueMap, intKeyValuePairs);
+                //totalOrderedCreate += CreateKeyValueMap<int, int>(keyValueMap, intKeyValuePairs);
                 //totalHeightOrdered += keyValueMap.Height;
+                totalOrderedGet += QueryKeyValueMap<int, int>(keyValueMap, intKeyValuePairs);
+                //totalOrderedRemove += RemoveKeyValueMap<int, int>(keyValueMap, intKeyValuePairs);
 
-                //totalOrderedGet += QueryKeyValueMap<int, int>(keyValueMap, intKeyValuePairs);
 
-                // Unordered
-                intKeyValuePairs.Shuffle();
-                keyValueMap.Clear();
+                //// Unordered
+                //intKeyValuePairs.Shuffle();
+                //keyValueMap.Clear();
                 //totalUnorderedCreate += CreateKeyValueMap<int, int>(keyValueMap, intKeyValuePairs);
                 //totalHeightUnordered += keyValueMap.Height;
+                //totalUnorderedGet += QueryKeyValueMap<int, int>(keyValueMap, intKeyValuePairs);
+                //totalUnorderedRemove += RemoveKeyValueMap<int, int>(keyValueMap, intKeyValuePairs);
 
             }
 
-            Console.WriteLine(keyValueMap.GetType());
+            //Console.WriteLine(keyValueMap.GetType());
 
             Console.WriteLine("Ordered");
-            Console.WriteLine(totalOrderedCreate / ITERATIONS);
-            Console.WriteLine(totalHeightOrdered / ITERATIONS);
+            //Console.WriteLine(totalOrderedCreate / ITERATIONS);
+            Console.WriteLine(totalOrderedGet / ITERATIONS);
+            //Console.WriteLine(totalOrderedRemove / ITERATIONS);
 
-            Console.WriteLine("Unordered");
-            Console.WriteLine(totalUnorderedCreate / ITERATIONS);
-            Console.WriteLine(totalHeightUnordered / ITERATIONS);
+            //Console.WriteLine(totalHeightOrdered / ITERATIONS);
+
+            //Console.WriteLine("Unordered");
+            //Console.WriteLine(totalUnorderedCreate / ITERATIONS);
+            //Console.WriteLine(totalUnorderedGet / ITERATIONS);
+            //Console.WriteLine(totalUnorderedRemove / ITERATIONS);
+            //Console.WriteLine(totalHeightUnordered / ITERATIONS);
 
 
 
         }
 
 
-    public static double CreateKeyValueMap<TKey, TValue>(
-                IKeyValueMap<TKey,TValue> keyValueMap,
-                List<KeyValuePair<TKey, TValue>> keyValuePairs )
+        public static double CreateKeyValueMap<TKey, TValue>(
+                    IKeyValueMap<TKey, TValue> keyValueMap,
+                    List<KeyValuePair<TKey, TValue>> keyValuePairs)
         {
             Stopwatch stopwatch = new Stopwatch();
 
@@ -89,7 +97,7 @@ namespace Lab1
 
             Console.WriteLine(stopwatch.Elapsed.TotalSeconds);
             return stopwatch.Elapsed.TotalSeconds;
-            
+
 
         }
 
